@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}All Students - Student Management{% endblock %}
+
+{% block content %}
+<h3>All Students</h3>
+<form method="get" action="/students/" class="mb-3 d-flex">
+  <input type="search" name="q" value="{{ q or '' }}" class="form-control me-2" placeholder="Search name, email or id">
+  <button class="btn btn-primary me-2" type="submit">Search</button>
+  {% if q %}
+    <a class="btn btn-secondary" href="/students/">Clear</a>
+  {% endif %}
+</form>
+{% if students %}
+  <table class="table table-bordered table-sm">
+    <thead>
+      <tr>
+        {% for col in students[0].keys() %}
+          <th>{{ col|capitalize }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in students %}
+          <tr>
+            {% for k, v in s.items() %}
+              {% if k != 'password' %}
+                <td>{{ v }}</td>
+              {% endif %}
+            {% endfor %}
+          {% if session.get('user') and session.get('user').get('is_admin') %}
+            <td>
+              <a class="btn btn-sm btn-outline-secondary" href="/students/edit/{{ s.get('id') }}">Edit</a>
+            </td>
+          {% endif %}
+          <td>
+            <a class="btn btn-sm btn-outline-success" href="/students/{{ s.get('id') }}/download/">Download PDF</a>
+          </td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-info">No students found.</div>
+{% endif %}
+{% endblock %}

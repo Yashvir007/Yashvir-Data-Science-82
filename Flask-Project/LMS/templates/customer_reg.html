@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6366f1, #f59e0b); /* Indigo → Yellow */
+  }
+
+  .register-card {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.95);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .register-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 12px 25px rgba(0,0,0,0.2);
+  }
+
+  .input-field {
+    border: 1px solid #ddd;
+    transition: border 0.2s, box-shadow 0.2s;
+  }
+
+  .input-field:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.3);
+  }
+
+  .register-btn {
+    background: linear-gradient(to right, #4f46e5, #f59e0b);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .register-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+  }
+</style>
+
+<section class="flex items-center justify-center min-h-screen">
+  <form method="POST" class="w-full max-w-lg">
+    <div class="register-card rounded-2xl p-10 shadow-xl">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Create Account</h2>
+      <p class="text-center text-gray-500 mb-6">Join <span class="font-semibold">MyLibrary</span> today 📚</p>
+
+      <!-- Full Name -->
+      <div class="relative mb-4">
+        <label for="full-name" class="leading-7 text-sm text-gray-600">Full Name</label>
+        <input type="text" id="full-name" name="full-name"
+          class="w-full bg-white rounded input-field text-base outline-none text-gray-700 py-2 px-3 leading-8"
+          placeholder="John Doe" required>
+      </div>
+
+      <!-- Email -->
+      <div class="relative mb-4">
+        <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+        <input type="email" id="email" name="email"
+          class="w-full bg-white rounded input-field text-base outline-none text-gray-700 py-2 px-3 leading-8"
+          placeholder="example@email.com" required>
+      </div>
+
+      <!-- Password -->
+      <div class="relative mb-4">
+        <label for="password" class="leading-7 text-sm text-gray-600">Password</label>
+        <input type="password" id="password" name="password"
+          class="w-full bg-white rounded input-field text-base outline-none text-gray-700 py-2 px-3 leading-8"
+          placeholder="••••••••" required>
+      </div>
+
+      <!-- Mobile -->
+      <div class="relative mb-4">
+        <label for="mobile" class="leading-7 text-sm text-gray-600">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" maxlength="10"
+          class="w-full bg-white rounded input-field text-base outline-none text-gray-700 py-2 px-3 leading-8"
+          placeholder="10-digit number" required>
+      </div>
+
+      <!-- Gender -->
+      <div class="relative mb-6">
+        <label class="leading-7 text-sm text-gray-600">Gender</label><br>
+        <div class="flex gap-6 mt-2">
+          <label class="flex items-center">
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <span class="ml-2">Male</span>
+          </label>
+          <label class="flex items-center">
+            <input type="radio" id="female" name="gender" value="Female">
+            <span class="ml-2">Female</span>
+          </label>
+          <label class="flex items-center">
+            <input type="radio" id="other" name="gender" value="Other">
+            <span class="ml-2">Other</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Register Button -->
+      <button type="submit"
+        class="register-btn w-full text-white font-semibold py-3 px-8 rounded-lg">
+        Register Now
+      </button>
+
+      <p class="text-xs text-gray-500 mt-4 text-center">Already have an account?
+        <a href="/login" class="text-indigo-600 font-semibold hover:underline">Login</a>
+      </p>
+    </div>
+  </form>
+</section>
+{% endblock content %}

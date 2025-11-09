@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6366f1, #f59e0b); /* Indigo → Yellow */
+  }
+
+  .login-card {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .login-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 12px 25px rgba(0,0,0,0.2);
+  }
+
+  .login-input {
+    padding-left: 2.5rem; /* space for icon */
+    border: 1px solid #ddd;
+    transition: border 0.2s, box-shadow 0.2s;
+  }
+
+  .login-input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.3);
+  }
+
+  .login-btn {
+    background: linear-gradient(to right, #f59e0b, #ef4444);
+    color: white;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .login-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+  }
+
+  .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+  }
+
+  .link {
+    font-size: 0.9rem;
+    color: #6366f1;
+    transition: color 0.2s;
+  }
+
+  .link:hover {
+    color: #4338ca;
+    text-decoration: underline;
+  }
+</style>
+
+<div class="flex items-center justify-center min-h-screen">
+  <div class="login-card p-8 rounded-2xl shadow-xl w-full max-w-md">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Welcome Back 👋</h2>
+    
+    <form method="POST">
+      <!-- Email -->
+      <div class="mb-4 relative">
+        <span class="icon"><i class="fas fa-envelope"></i></span>
+        <input type="email" id="email" name="email"
+               class="w-full px-3 py-2 rounded focus:outline-none login-input"
+               placeholder="Enter your email" required>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-6 relative">
+        <span class="icon"><i class="fas fa-lock"></i></span>
+        <input type="password" id="password" name="password"
+               class="w-full px-3 py-2 rounded focus:outline-none login-input"
+               placeholder="Enter your password" required>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit"
+              class="w-full py-2 rounded login-btn font-semibold">
+        Login
+      </button>
+    </form>
+
+    <!-- Links -->
+    <div class="mt-4 flex justify-between">
+      <a href="#" class="link">Forgot Password?</a>
+     <a href="{{ url_for('customer_reg') }}" class="link">Create Account</a>
+
+    </div>
+
+    {% if error %}
+      <p class="text-red-500 mt-4 text-center">{{ error }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- FontAwesome Icons -->
+<script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+{% endblock content %}

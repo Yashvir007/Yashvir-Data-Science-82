@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+  <div class="grid grid-cols-2 gap-6">
+    <div class="p-6 bg-white rounded shadow">
+      <h3 class="text-xl font-semibold">Total Customers</h3>
+      <p class="text-4xl mt-2">{{ customers }}</p>
+    </div>
+    <div class="p-6 bg-white rounded shadow">
+      <h3 class="text-xl font-semibold">Total Books</h3>
+      <p class="text-4xl mt-2">{{ books }}</p>
+    </div>
+  </div>
+  <div class="mt-8">
+    <a href="{{ url_for('admin_logout') }}" class="px-4 py-2 bg-red-500 text-white rounded">Logout</a>
+  </div>
+</div>
+{% endblock %}

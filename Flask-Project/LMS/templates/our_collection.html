@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/our_collection.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="collection-hero">
+  <div class="container hero-inner">
+    <h1>Our Collection</h1>
+    <p class="lead">Explore a curated selection of books across genres. Search, filter, and discover your next read.</p>
+
+    <form method="get" class="search-form">
+      <input 
+        type="search" 
+        name="q" 
+        placeholder="Search by title, author, or ISBN" 
+        value="{{ request.args.get('q','') }}"
+        class="search-input"
+      >
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+  </div>
+</section>
+
+<section class="collection-grid container">
+  {% if books %}
+    <div class="grid-books">
+      {% for book in books %}
+        <article class="card" aria-labelledby="book-{{ book.id }}">
+          <div class="thumb">
+            <img src="{{ url_for('static', filename='img/img1.jpg') }}" alt="{{ book.title }}">
+          </div>
+          <div class="card-body">
+            <div class="card-header">
+              <h3 id="book-{{ book.id }}" class="title">{{ book.title }}</h3>
+              <span class="badge {% if book.available and book.available|int > 0 %}in-stock{% else %}out-of-stock{% endif %}">
+                {% if book.available and book.available|int > 0 %}Available{% else %}Out of stock{% endif %}
+              </span>
+            </div>
+
+            <p class="meta">{{ book.author or 'Unknown Author' }}</p>
+            <p class="meta small">ISBN: {{ book.isbn or 'N/A' }}</p>
+            <p class="copies">Copies: {{ book.copies }} • Available: {{ book.available }}</p>
+
+            <div class="actions" role="group" aria-label="Book actions">
+              <a class="btn btn-edit" href="{{ url_for('update_book', id=book.id) }}">Edit</a>
+              {% if book.pdf_url %}
+                <a class="btn btn-read" href="{{ book.pdf_url }}" target="_blank">Read</a>
+              {% else %}
+                <span class="btn btn-read disabled" style="background:#ccc;cursor:not-allowed;">No PDF</span>
+              {% endif %}
+              <a class="btn btn-rent" href="{{ url_for('rent_book', id=book.id) }}">Rent</a>
+              {% if book.pdf_url %}
+                <a class="btn btn-pdf" href="{{ book.pdf_url }}" target="_blank">Read PDF</a>
+              {% endif %}
+              <form action="{{ url_for('delete_book', id=book.id) }}" method="post" onsubmit="return confirm('Delete this book?');" class="inline-form">
+                <button type="submit" class="btn btn-delete">Delete</button>
+              </form>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="no-results">No books found in the collection.</p>
+  {% endif %}
+</section>
+{% endblock %}

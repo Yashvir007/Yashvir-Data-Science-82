@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Library Management System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/our_collection.css') }}">
+</head>
+<body>
+  {% include 'base.html' %}
+
+  {% block content %}
+  <div class="container mx-auto my-10 max-w-3xl bg-white p-6 rounded shadow">
+    <h1 class="text-3xl font-bold mb-4">Privacy Policy</h1>
+
+    <p>Effective date: October 6, 2025</p>
+
+    <h2 class="mt-4 text-xl font-semibold">1. Introduction</h2>
+    <p>
+      This Privacy Policy explains how Library Management System ("we", "us", "our") collects, uses, and shares information when you use our website or services. We are committed to protecting the privacy of our readers, members, and staff.
+    </p>
+
+    <h2 class="mt-4 text-xl font-semibold">2. Information We Collect</h2>
+    <ul>
+      <li><strong>Personal information:</strong> name, email address, phone number, postal address when you register as a member or contact us.</li>
+      <li><strong>Account information:</strong> membership ID, borrowing history, fines and payments related to library transactions.</li>
+      <li><strong>Technical information:</strong> IP address, browser type, device information, and usage logs to help maintain and secure the service.</li>
+    </ul>
+
+    <h2 class="mt-4 text-xl font-semibold">3. How We Use Your Information</h2>
+    <p>We may use the information we collect to:</p>
+    <ul>
+      <li>Provide and improve library services, including lending, reservations, and notifications about due dates.</li>
+      <li>Respond to support and contact requests.</li>
+      <li>Send administrative messages (e.g., account notices, policy updates).</li>
+      <li>Comply with legal obligations and protect the security of our systems.</li>
+    </ul>
+
+    <h2 class="mt-4 text-xl font-semibold">4. Sharing and Disclosure</h2>
+    <p>
+      We do not sell personal data. We may share information with:
+    </p>
+    <ul>
+      <li>Third-party service providers who perform services on our behalf (e.g., email delivery providers).</li>
+      <li>Law enforcement or authorities when required by law.</li>
+    </ul>
+
+    <h2 class="mt-4 text-xl font-semibold">5. Data Retention</h2>
+    <p>
+      We retain personal information for as long as necessary to provide services, comply with legal obligations, and resolve disputes.
+    </p>
+
+    <h2 class="mt-4 text-xl font-semibold">6. Your Choices</h2>
+    <p>
+      You can request access to, correction of, or deletion of your personal information. Contact us via the <a href="{{ url_for('contact') }}">contact page</a>.
+    </p>
+
+    <h2 class="mt-4 text-xl font-semibold">7. Security</h2>
+    <p>
+      We implement reasonable technical and organizational measures to protect personal data, but no system is completely secure.
+    </p>
+
+    <h2 class="mt-4 text-xl font-semibold">8. Changes to this Policy</h2>
+    <p>
+      We may update this policy; material changes will be posted on this page with a revised effective date.
+    </p>
+
+    <h2 class="mt-4 text-xl font-semibold">9. Contact</h2>
+    <p>
+      For privacy questions or requests, please contact us via the <a href="{{ url_for('contact') }}">contact page</a> or email <a href="mailto:info@librarysystem.com">info@librarysystem.com</a>.
+    </p>
+
+  </div>
+  {% endblock %}
+
+</body>
+</html>

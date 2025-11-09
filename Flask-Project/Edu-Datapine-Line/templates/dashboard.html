@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Student Management{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h3>Welcome {{ user.name or user.email }}</h3>
+    {% if student %}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            {% for k in student.keys() %}
+              <th>{{ k|capitalize }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for k, v in student.items() %}
+              {% if k != 'password' %}
+                <td>{{ v }}</td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+      {% if session.get('user') and (session.get('user').get('is_admin') or session.get('user').get('email')|lower == student.email|lower) %}
+        <a class="btn btn-success" href="/students/{{ student.id }}/download/">Download PDF</a>
+      {% endif %}
+    {% else %}
+      <div class="alert alert-warning">No student data available for your account.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

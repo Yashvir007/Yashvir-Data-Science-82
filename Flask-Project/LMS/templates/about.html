@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Library Management System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    header {
+      background-color: #004d40;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #004d40;
+      border-bottom: 2px solid #004d40;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .feature {
+      background-color: #e0f2f1;
+      padding: 20px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .feature:hover {
+      background-color: #b2dfdb;
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background-color: #004d40;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #80cbc4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>About Our Library Management System</h1>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>Our Mission</h2>
+      <p>
+        Our Library Management System aims to simplify and modernize the way libraries manage their collections, memberships, and transactions. 
+        We believe in empowering librarians and readers with technology that promotes efficient book circulation and easy access to knowledge.
+      </p>
+    </section>
+
+    <section>
+      <h2>Key Features</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Book Management</h3>
+          <p>Easily add, update, and categorize books for efficient tracking and availability.</p>
+        </div>
+        <div class="feature">
+          <h3>Member Management</h3>
+          <p>Maintain accurate records of library members, their profiles, and borrowing history.</p>
+        </div>
+        <div class="feature">
+          <h3>Automated Issue & Return</h3>
+          <p>Quickly issue and return books with automatic due date tracking and fine calculation.</p>
+        </div>
+        <div class="feature">
+          <h3>Reports & Analytics</h3>
+          <p>Generate detailed reports on book usage, member activity, and library performance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+      <p>
+        Have questions or need support? Reach out to our team:
+      </p>
+      <p>
+        📧 Email: <a href="yashvirbbsc@gmail.com">yashvirbbsc@gmail.com.com</a><br />
+        ☎️ Phone: +919410446265
+      </p>
+      <p>
+        <a href="{{ url_for('contact') }}" class="text-blue-600">Contact Support</a>
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Library Management System | Designed with ❤️ for readers everywhere</p>
+  <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+  </footer>
+</body>
+</html>

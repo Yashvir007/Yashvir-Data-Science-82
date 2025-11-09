@@ -1,0 +1,1 @@
+"""temporary template checker - removed"""

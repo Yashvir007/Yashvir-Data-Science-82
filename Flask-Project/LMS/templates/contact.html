@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Library Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* 🌟 Contact Page Custom Styles */
+
+    body {
+      background: #f8fafc; /* subtle gray background */
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1f2937; /* gray-800 */
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    /* Flash messages */
+    .bg-green-100, .bg-red-100 {
+      font-weight: 500;
+      border-left: 4px solid;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+    }
+    .bg-green-100 { border-color: #16a34a; }
+    .bg-red-100 { border-color: #dc2626; }
+
+    /* Input & Textarea styling */
+    input, textarea {
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #facc15; /* yellow-400 */
+      box-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
+      outline: none;
+    }
+
+    /* Label */
+    label {
+      color: #374151;
+      font-weight: 600;
+    }
+
+    /* Submit Button */
+    button[type="submit"] {
+      background-color: #facc15;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #eab308;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(234, 179, 8, 0.4);
+    }
+
+    /* "Or contact via" section */
+    .text-sm {
+      color: #4b5563;
+      text-align: right;
+    }
+
+    .text-sm a {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .text-sm a:hover {
+      color: #000;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 640px) {
+      .container {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .text-sm {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .flex {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mx-auto my-10 max-w-2xl">
+    <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div>
+          {% for category, msg in messages %}
+            <div class="p-3 mb-2 rounded {{ 'bg-green-100 text-green-800' if category=='success' else 'bg-red-100 text-red-800' }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" action="/contact" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Your name</label>
+        <input name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" placeholder="Your full name">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Your email</label>
+        <input name="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" placeholder="you@example.com">
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+        <textarea name="message" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" placeholder="Write your message here"></textarea>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Send Message</button>
+
+        <div class="text-sm">
+          <p>Or contact via:</p>
+          <a href="mailto:info@librarysystem.com" class="text-blue-600 hover:underline">Email</a>
+          &nbsp;|&nbsp;
+          <a href="https://wa.me/15551234567?text=Hello%20Library" target="_blank" class="text-green-600 hover:underline">WhatsApp</a>
+          &nbsp;|&nbsp;
+          <a href="mailto:info@librarysystem.com" class="text-gray-600 hover:underline">Privacy Policy</a>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</body>
+</html>

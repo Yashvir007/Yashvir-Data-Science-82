@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Student - Student Management{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Edit Student</h5>
+        <form method="post" action="">
+          {% for col in columns %}
+            {% set val = student.get(col) %}
+            <div class="mb-3">
+              <label for="{{ col }}" class="form-label">{{ col|capitalize }}</label>
+              {% if col == id_col %}
+                <input type="text" class="form-control" id="{{ col }}" name="{{ col }}" value="{{ val }}" readonly>
+              {% elif col == 'password' %}
+                <input type="password" class="form-control" id="{{ col }}" name="{{ col }}" placeholder="Leave blank to keep current">
+              {% elif 'email' in col %}
+                <input type="email" class="form-control" id="{{ col }}" name="{{ col }}" value="{{ val }}" required>
+              {% else %}
+                <input type="text" class="form-control" id="{{ col }}" name="{{ col }}" value="{{ val }}">
+              {% endif %}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Save</button>
+          <a class="btn btn-secondary" href="/students/">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — Library Management System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/our_collection.css') }}">
+</head>
+<body>
+  {% include 'base.html' %}
+
+  {% block content %}
+  <div class="container mx-auto my-10 max-w-3xl bg-white p-6 rounded shadow">
+    <h1 class="text-3xl font-bold mb-4">Frequently Asked Questions (FAQ)</h1>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold">1. How do I become a member?</h2>
+      <p>Click on Sign Up or register at the library counter. You will need to provide a valid email and phone number.</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold">2. How many books can I borrow?</h2>
+      <p>Standard members may borrow up to 5 books at a time. Limits can vary for special memberships.</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold">3. What is the loan period?</h2>
+      <p>The typical loan period is 14 days. Renewals may be possible if there are no reservations on the item.</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold">4. How are late fines calculated?</h2>
+      <p>Late fines are calculated per calendar day overdue. Check with the library for the current rate.</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold">5. Can I reserve a book that is currently loaned out?</h2>
+      <p>Yes — log into your account and place a reservation. You will be notified when the book becomes available.</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold">6. Do you provide e-books or online access?</h2>
+      <p>We offer a digital collection of e-books and some licensed resources. Check Our Collection or contact support for access details.</p>
+    </div>
+
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold">7. How do I contact support?</h2>
+      <p>Use the <a href="{{ url_for('contact') }}">Contact page</a>, email <a href="mailto:info@librarysystem.com">info@librarysystem.com</a>, or call our support number.</p>
+    </div>
+
+  </div>
+  {% endblock %}
+
+</body>
+</html>
